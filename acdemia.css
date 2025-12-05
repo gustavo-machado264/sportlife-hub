@@ -22,7 +22,7 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     line-height: 1.6;
     color: var(--color-text-light);
     background-color: var(--color-background);
@@ -33,6 +33,16 @@ body {
 a {
     text-decoration: none;
     color: inherit;
+}
+
+/* ===========================
+   CONTAINER GERAL (CORREÇÃO PRINCIPAL)
+=========================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
 }
 
 /* ===========================
@@ -139,14 +149,15 @@ nav a:hover::after {
 =========================== */
 .title-group {
     padding: 50px 0 30px;
-    text-align: center;
+    text-align: left; /* Alterado para esquerda */
 }
 
 .title-group h1 {
-    font-size: 42px;
-    font-weight: 700;
+    font-size: 36px; /* Reduzido de 42px */
+    font-weight: 800; /* Mais consistente com Inter */
     color: var(--color-white);
     margin-bottom: 8px;
+    letter-spacing: -0.5px; /* Adicionado para consistência */
 }
 
 .lead {
@@ -187,12 +198,13 @@ label {
 
 input[type="text"], select {
     width: 100%;
-    padding: 12px;
+    padding: 12px 16px; /* Aumentado padding horizontal */
     border: 1px solid var(--color-gray-border);
     border-radius: 8px;
     background-color: var(--color-background);
     color: var(--color-text-light);
-    font-size: 16px;
+    font-size: 15px; /* Tamanho de fonte padrão */
+    font-family: inherit; /* Herda a fonte do body */
 }
 
 .btn-primary {
@@ -202,13 +214,19 @@ input[type="text"], select {
     border-radius: 8px;
     font-size: 16px;
     font-weight: 600;
-    width: 100%;
+    width: auto; /* Alterado de 100% para auto */
+    min-width: 200px; /* Largura mínima */
     box-shadow: 0 4px 15px rgba(239,68,68,0.3);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
 }
 
 .btn-primary:hover {
     background-color: #dc2626;
     box-shadow: 0 8px 20px rgba(239,68,68,0.4);
+    transform: translateY(-2px);
 }
 
 /* ===========================
@@ -236,7 +254,7 @@ input[type="text"], select {
 }
 
 .academia-card h3 {
-    font-size: 24px;
+    font-size: 20px; /* Reduzido de 24px */
     font-weight: 700;
     color: var(--color-white);
     margin-bottom: 15px;
@@ -245,7 +263,7 @@ input[type="text"], select {
 }
 
 .academia-card p {
-    font-size: 16px;
+    font-size: 14px; /* Reduzido de 16px */
     color: var(--color-text-dark);
     margin-bottom: 8px;
     display: flex;
@@ -270,6 +288,19 @@ input[type="text"], select {
     .col-4, .col-12 {
         flex: 1 1 100%;
     }
+    
+    .btn-primary {
+        width: 100%; /* Em mobile, botão ocupa 100% */
+        min-width: auto;
+    }
+    
+    .title-group h1 {
+        font-size: 30px;
+    }
+    
+    nav {
+        gap: 0;
+    }
 }
 
 @media (max-width: 480px) {
@@ -280,80 +311,25 @@ input[type="text"], select {
     nav a {
         font-size: 13px;
     }
-}
-
-.menu-toggle {
-    display: none;
-    font-size: 30px;
-    background: none;
-    border: none;
-    color: var(--color-white);
-    cursor: pointer;
-    z-index: 1001;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
+    
+    .title-group {
+        padding: 30px 0 20px;
     }
-
-    nav {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 70%;
-        max-width: 300px;
-        height: 100%;
-        flex-direction: column;
-        background-color: var(--color-background-light);
-        padding: 80px 20px 20px;
-        gap: 10px;
-        transition: right 0.3s ease-in-out;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.3);
-    }
-
-    nav.open {
-        right: 0;
-    }
-
-    nav a {
-        padding: 15px 0;
-        border-bottom: 1px solid var(--color-gray-border);
-    }
-}
-
-/* ===========================
-   FORMULÁRIO RESPONSIVO
-   =========================== */
-
-@media (max-width: 768px) {
-    .grid {
-        flex-direction: column; /* Colunas empilhadas */
-        gap: 15px;
-        align-items: flex-start; /* Alinha à esquerda */
-    }
-
-    .col-4, .col-12 {
-        flex: 1 1 100%; /* Ocupa 100% do container */
-    }
-
-    .btn-primary {
-        width: 100%; /* Botão ocupa 100% */
-    }
-}
-
-@media (max-width: 480px) {
+    
     .title-group h1 {
-        font-size: 28px;
-        text-align: left; /* Título à esquerda no mobile */
+        font-size: 24px;
     }
-
+    
     .lead {
-        text-align: left;
+        font-size: 16px;
     }
-
-    label {
-        text-align: left;
+    
+    .card {
+        padding: 20px;
+    }
+    
+    input[type="text"], select {
+        padding: 10px 14px;
+        font-size: 14px;
     }
 }
